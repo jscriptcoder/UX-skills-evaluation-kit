@@ -5,8 +5,6 @@ import Highcharts from 'highcharts'
 import HighchartsMore from 'highcharts/highcharts-more'
 import HighchartsReact from 'highcharts-react-official'
 
-import './Competency.css'
-
 HighchartsMore(Highcharts)
 
 const { Column } = Table

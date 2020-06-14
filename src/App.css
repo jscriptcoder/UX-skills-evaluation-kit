@@ -19,6 +19,15 @@ body {
   padding: 16px;
 }
 
+.ColumnRating {
+  display: flex;
+  align-items: center;
+}
+
+.ColumnRating .anticon {
+  margin-left: 8px;
+}
+
 /* Overriding Antd */
 
 .App .ant-steps-item-process .ant-steps-item-icon,
