@@ -1,12 +1,35 @@
 @import "~antd/dist/antd.css";
 
+body {
+  color: #2f0084;
+}
+
 .App {}
+
+.Header {
+  background-color: #300084;
+}
 
 .Content {
   padding: 16px;
 }
 
-.Tabs {
+.Slide {
   background-color: white;
   padding: 16px;
+}
+
+/* Overriding Antd */
+
+.App .ant-steps-item-process .ant-steps-item-icon,
+.App .ant-slider-track,
+.App .ant-slider:hover .ant-slider-track,
+.App .ant-steps-navigation .ant-steps-item::before {
+  background: #300084;
+}
+
+.App .ant-slider-handle,
+.App .ant-slider-dot-active,
+.App .ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open) {
+  border-color: #300084;
 }

@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types'
-import { Row, Col, Table, Slider } from 'antd'
+import { Row, Col, Table, Slider, Popover, List } from 'antd'
+import { InfoCircleTwoTone } from '@ant-design/icons'
 import Highcharts from 'highcharts'
 import HighchartsMore from 'highcharts/highcharts-more'
 import HighchartsReact from 'highcharts-react-official'
-import FormItemInput from 'antd/lib/form/FormItemInput';
+
+import './Competency.css'
 
 HighchartsMore(Highcharts)
 
 const { Column } = Table
+const { Item } = List
 
-const radarOptions = {
+const DEFAULT_RADAR = {
 
   chart: { polar: true },
 
@@ -30,11 +32,13 @@ const radarOptions = {
   yAxis: {
       gridLineInterpolation: 'polygon',
       lineWidth: 0,
-      min: 0
+      min: 0,
+      max: 5,
   },
 
   series: [{
       name: 'Rate',
+      color: '#300084',
       pointPlacement: 'on'
   }],
 }
@@ -44,17 +48,16 @@ export default function Competency(props) {
     { key: 'uxl', name: 'UX Leadership', rating: 0 },
     { key: 'unr', name: 'User needs research', rating: 0 },
     { key: 'ue', name: 'Usability Evaluation', rating: 0 },
-    { key: 'p', name: 'Prototyping', rating: 0 },
+    { key: 'pr', name: 'Prototyping', rating: 0 },
     { key: 'id', name: 'Interaction Design', rating: 0 },
     { key: 'vd', name: 'Visual Design', rating: 0 },
     { key: 'ia', name: 'Information Architecture', rating: 0 },
     { key: 'tw', name: 'Technical Writing', rating: 0 },
   ])
 
-  const { xAxis, series } = radarOptions
-  
-  xAxis.categories = disciplines.map(discipline => discipline.name)
-  series[0].data = disciplines.map(discipline => discipline.rating || 0)
+  const radarOptions = {...DEFAULT_RADAR}
+  radarOptions.xAxis.categories = disciplines.map(discipline => discipline.name)
+  radarOptions.series[0].data = disciplines.map(discipline => discipline.rating || 0)
 
   return (
     <div className="Competency">
@@ -69,7 +72,26 @@ export default function Competency(props) {
               dataIndex="name"
               key="name" width={400} />
             <Column
-              title="Rating"
+              title={(
+                <div className="ColumnRating">
+                  <span>Rating</span>
+                  <Popover 
+                    title="Points description"
+                    placement="topRight" 
+                    content={(
+                      <List size="small">
+                        <Item>0 - I don’t understand this competence or it is non-existent</Item>
+                        <Item>1 - Novice: I have a basic understanding of this competence</Item>
+                        <Item>2 - Advanced beginner: I can demonstrate this competence under supervision</Item>
+                        <Item>3 - Competent: I can demonstrate this competence independently</Item>
+                        <Item>4 - Proficient: I can supervise other people in this competence</Item>
+                        <Item>5 - Expert: I develop new ways of applying this competence</Item>
+                      </List>
+                    )}>
+                    <InfoCircleTwoTone style={{ fontSize: 18 }} twoToneColor="#2f0084" />
+                  </Popover>
+                </div>
+              )}
               dataIndex="rating"
               key="rating"
               render={(_, item) => (

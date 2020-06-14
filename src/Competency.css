@@ -1,0 +1,8 @@
+.ColumnRating {
+  display: flex;
+  align-items: center;
+}
+
+.ColumnRating .anticon {
+  margin-left: 8px;
+}
