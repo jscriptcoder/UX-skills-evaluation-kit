@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Tabs, Layout } from 'antd'
 
-function App() {
+import './App.css'
+import Competency from './Competency'
+import SelfEvaluation from './SelfEvaluation'
+
+const { Header, Content, Footer } = Layout
+const { TabPane } = Tabs
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Layout className="App">
+      <Header />
+      <Content className="Content">
+        <Tabs className="Tabs" defaultActiveKey="1">
+          <TabPane tab="Travis Competency map" key="1">
+            <Competency />
+          </TabPane>
+          <TabPane tab="Bacon's UXD self evaluation" key="2">
+            <SelfEvaluation />
+          </TabPane>
+          <TabPane tab="Tab 3" key="3">
+            Tab Pane 3
+          </TabPane>
+        </Tabs>
+      </Content>
+      <Footer/>
+    </Layout>
+  )
 }
-
-export default App;
