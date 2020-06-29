@@ -1,1 +1,0 @@
-# UX-skills-evaluation-kit
