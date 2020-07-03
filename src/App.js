@@ -6,8 +6,6 @@ import Header from './Header'
 import Content from './Content'
 
 export default function App() {
-  const slides = useRef(null)
-
   return (
     <Store>
       <Layout className="App">

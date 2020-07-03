@@ -1,40 +1,54 @@
 const appContent = {
   groups: [{
+    id: 'research',
     title: 'Research',
     disciplines: [{
-      id: 'competitiveAnalysis',
-      title: 'Competitive Analysis',
+      id: 'qualitativeResearch',
+      title: 'Qualitative Research',
+      description: '',
+    }, {
+      id: 'quantitativeResearch',
+      title: 'Quantitative Research',
+      description: '',
+    }, {
+      id: 'businessNeeds',
+      title: 'Business Needs Evaluation',
       description: 'Stakeholders interviews, market reports, identify business needs',
     }, {
       id: 'designEvaluation',
       title: 'Design Evaluation',
       description: 'Studio critique, usability testing, directional testing, usage analysis, evaluative techniques'
     }, {
-      id: 'userModelling',
-      title: 'User Modelling',
-      description: ''
-    }, {
-      id: 'personas',
-      title: 'Personas, user profiles, mental models, user archetypes',
-      description: 'Concept elicitation, participatory design, exploratory metaphors'
+      id: 'userModeling',
+      title: 'User Modeling',
+      description: 'Personas, user profiles, mental models, user archetypes'
     }]
   }, {
+    id: 'design',
     title: 'Design',
     disciplines: [{ 
-      id: 'highLevelRepresentation',
-      title: 'High Level Representation',
+      id: 'prototyping',
+      title: 'Prototyping',
       description: '',
     }, { 
-      id: 'detailedDesign',
-      title: 'Detailed Design',
+      id: 'visualDesign',
+      title: 'Visual Design',
       description: '',
     }, {
-      id: 'interactivePrototyping',
-      title: 'Interactive Prototyping',
+      id: 'interationDesign',
+      title: 'Interaction Design',
       description: '',
-    }
-    ]
+    }, {
+      id: 'collaboration',
+      title: 'Collaboration',
+      description: 'Workshop organization and facilitation, design thinking methods'
+    }, {
+      id: 'usbilityEngineering',
+      title: 'Usability Engineering',
+      description: 'Usability testing, heuristic evaluations, task analysis',
+    }]
   }, {
+    id: 'content',
     title: 'Content',
     disciplines: [{
       id: 'technicalWriting',
@@ -48,8 +62,13 @@ const appContent = {
       id: 'contentStrategy',
       title: 'Content strategy',
       description: '',
+    }, {
+      id: 'localization',
+      title: 'Localization',
+      description: 'Translation, localization, transcreation',
     }]
   }, {
+    id: 'product',
     title: 'Product',
     disciplines: [{
       id: 'strategy',
@@ -63,8 +82,20 @@ const appContent = {
       id: 'projectManagement',
       title: 'Project Management',
       description: 'Managing concurrent projects, meeting deadlines, ...',
+    }, {
+      id: 'stakeHolderManagement',
+      title: 'Stakeholder Management',
+      description: '',
     }]
-  }]
+  }],
+  ratings: [
+    "0 - I don’t understand this competence or it is non-existent",
+    "1 - Novice: I have a basic understanding of this competence",
+    "2 - Advanced beginner: I can demonstrate this competence under supervision",
+    "3 - Competent: I can demonstrate this competence independently",
+    "4 - Proficient: I can supervise other people in this competence",
+    "5 - Expert: I develop new ways of applying this competence",
+  ]
 }
 
 export default appContent

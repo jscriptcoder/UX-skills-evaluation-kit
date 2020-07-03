@@ -10,7 +10,7 @@ const { Step } = Steps
 
 export default function Content() {
   const slides = useRef(null)
-  const [state, dispatch] = useContext(AppContext)
+  const { state, dispatch } = useContext(AppContext)
   const { currentStep } = state
 
   return (
@@ -22,16 +22,13 @@ export default function Content() {
           dispatch({ type: 'changeStep', step })
           slides.current.goTo(step)
         }}>
-          {appContent.groups.map((group, i) => <Step key={i} title={group.title} />)}
+          {appContent.groups.map(group => <Step key={group.id} title={group.title} />)}
       </Steps>
       <Carousel dots={false} ref={slides}>
-        {appContent.groups.map(({ disciplines }, i) => (
+        {appContent.groups.map(group => (
           <Disciplines 
-            key={i}
-            list={disciplines.map(discipline => ({
-              ...discipline,
-              rating: state.disciplines[discipline.id]
-            }))} />
+            key={group.id}
+            groupId={group.id} />
         ))}
       </Carousel>
     </Layout.Content>

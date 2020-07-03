@@ -15,7 +15,6 @@ const radarOptions = {
   },
 
   yAxis: {
-      gridLineInterpolation: 'polygon',
       lineWidth: 0,
       min: 0,
       max: 5,

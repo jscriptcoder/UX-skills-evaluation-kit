@@ -1,42 +1,48 @@
-import React, { createContext, useReducer } from 'react'
+import React, { createContext, useReducer, useMemo } from 'react'
 
 const appInitialState = {
   currentStep: 0,
-  disciplines: {
-    // Research
-    competitiveAnalysis: 0,
+  research: {
+    qualitativeResearch: 0,
+    quantitativeResearch: 0,
+    businessNeeds: 0,
     designEvaluation: 0,
-    userModelling: 0,
-    personas: 0,
-
-    // Design
-    highLevelRepresentation: 0,
-    detailedDesign: 0,
-    interactivePrototyping: 0,
-
-    // Content
+    userModeling: 0,
+  },
+  design: {
+    prototyping: 0,
+    visualDesign: 0,
+    interationDesign: 0,
+    collaboration: 0,
+    usbilityEngineering: 0,
+  },
+  content: {
     technicalWriting: 0,
     informationArchitecture: 0,
     contentStrategy: 0,
-
-    // Product
+    localization: 0,
+  },
+  product: {
     strategy: 0,
     scenarios: 0,
     projectManagement: 0,
+    stakeHolderManagement: 0,
   }
 }
 
 function appReducer(state, action) {
   const { type } = action
-
   switch(type) {
     case 'changeStep':
+      const { step } = action
       return { ...state, currentStep: action.step }
     case 'changeRating':
+      const { groupId, disciplineId, rating } = action
       return { 
         ...state, 
-        disciplines: { 
-          [action.discipline]: action.rating
+        [groupId]: {
+          ...state[groupId],
+          [disciplineId]: rating
         }
       }
   }
@@ -48,8 +54,10 @@ export default function Store(props) {
   const { children } = props
   const [ state, dispatch ] = useReducer(appReducer, appInitialState)
 
+  const contextValue = useMemo(() => ({ state, dispatch }), [state])
+
   return (
-    <AppContext.Provider value={[state, dispatch]}>
+    <AppContext.Provider value={contextValue}>
       {children}
     </AppContext.Provider>
   )
