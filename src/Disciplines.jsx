@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useCallback } from 'react'
+import React, { useContext, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, Table, Slider, Popover, List } from 'antd'
 import { InfoCircleTwoTone } from '@ant-design/icons'
@@ -6,7 +6,6 @@ import Highcharts from 'highcharts'
 import HighchartsMore from 'highcharts/highcharts-more'
 import HighchartsReact from 'highcharts-react-official'
 
-import './Disciplines.less'
 import { AppContext } from './Store'
 import appContent from './app-content'
 import radarOptions from './radar-options'
@@ -21,6 +20,10 @@ const slideMarks = [0, 1, 2, 3, 4, 5]
     marks[val] = val
     return marks
   }, {})
+
+const tipFormatter = value => {
+  return appContent.ratings[value]
+}
 
 export default function Disciplines(props) {
   const { groupId } = props
@@ -43,10 +46,10 @@ export default function Disciplines(props) {
   }, [disciplines, ratings])
 
   return (
-    <div className="Disciplines">
+    <div className="Page Disciplines">
       <Row gutter={16}>
         <Col span={12}>
-          <div className="columnPanel">
+          <div className="Panel">
             <Table
               size="small"
               rowKey="id"
@@ -54,20 +57,11 @@ export default function Disciplines(props) {
               dataSource={disciplines}>
               <Column
                 title="Discipline"
-                dataIndex="title"
                 key="title"
-                width={400} />
-              <Column
-                key="info"
-                render={item => (
-                  <Popover
-                    key={item.id}
-                    placement="top"
-                    content={item.description}>
-                    <InfoCircleTwoTone
-                      style={{ fontSize: 18 }}
-                      twoToneColor="#300084" />
-                  </Popover>
+                width={400} render={item => (
+                  <Item style={{  marginRight: 16 }}>
+                    <Item.Meta title={item.title} description={item.description} />
+                  </Item>
                 )} />
               <Column
                 title="Rating"
@@ -75,6 +69,7 @@ export default function Disciplines(props) {
                 render={item => (
                   <Slider
                     value={ratings[item.id]}
+                    tipFormatter={tipFormatter}
                     onChange={rating => {
                       dispatch({
                         type: 'changeRating',
@@ -91,7 +86,7 @@ export default function Disciplines(props) {
           </div>
         </Col>
         <Col span={12}>
-          <div className="columnPanel">
+          <div className="Panel">
             <HighchartsReact
               highcharts={Highcharts}
               options={getChartOptions()} />

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { Layout } from 'antd'
 
 import Store from './Store'

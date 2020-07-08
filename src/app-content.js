@@ -89,12 +89,12 @@ const appContent = {
     }]
   }],
   ratings: [
-    "0 - I don’t understand this competence or it is non-existent",
-    "1 - Novice: I have a basic understanding of this competence",
-    "2 - Advanced beginner: I can demonstrate this competence under supervision",
-    "3 - Competent: I can demonstrate this competence independently",
-    "4 - Proficient: I can supervise other people in this competence",
-    "5 - Expert: I develop new ways of applying this competence",
+    'I don’t understand this competence or it is non-existent',
+    'Novice: I have a basic understanding of this competence',
+    'Advanced beginner: I can demonstrate this competence under supervision',
+    'Competent: I can demonstrate this competence independently',
+    'Proficient: I can supervise other people in this competence',
+    'Expert: I develop new ways of applying this competence',
   ]
 }
 
