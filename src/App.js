@@ -1,20 +1,29 @@
 import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Layout } from 'antd'
+import {
+  useFirestoreDocData,
+  useFirestore
+} from 'reactfire'
 
 import { AppContext } from './Store'
 import Header from './Header'
 import Content from './Content'
 
 export default function App(props) {
-  const { user } = props
-  const { dispatch } = useContext(AppContext)
+  const { state, dispatch } = useContext(AppContext)
 
-  // useEffect(() => {
-  //   if (user) {
-  //     dispatch('userLoaded', user)
-  //   }
-  // }, [user])
+  const userRef = useFirestore()
+    .collection('users')
+    .doc(state.user.id)
+  
+  const user = useFirestoreDocData(userRef)
+
+  useEffect(() => {
+    if (user) {
+      dispatch({ type: 'userLoaded', user })
+    }
+  }, [user])
 
   return (
     <Layout className="App">

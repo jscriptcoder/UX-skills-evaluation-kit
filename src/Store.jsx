@@ -42,7 +42,7 @@ function appReducer(state, action) {
   switch(type) {
 
     case 'userLoaded':
-      const { name, email } = action
+      const { name, email } = action.user
       return { 
         ...state, 
         user: {
@@ -65,6 +65,8 @@ function appReducer(state, action) {
           [disciplineId]: rating
         }
       }
+    default: 
+      return state
   }
 }
 
