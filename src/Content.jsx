@@ -7,7 +7,7 @@ import { AppContext } from './Store'
 import StartPage from './StartPage'
 import Disciplines from './Disciplines'
 import ResultsPage from './ResultsPage'
-import appContent from './app-content'
+import appContent from './appContent'
 
 const { Step } = Steps
 

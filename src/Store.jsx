@@ -1,6 +1,13 @@
 import React, { createContext, useReducer, useMemo } from 'react'
 
+import { getQueryParam } from './utils'
+
 const appInitialState = {
+  user: {
+    id: getQueryParam('user'),
+    name: '',
+    email: '',
+  },
   currentStep: 0,
   research: {
     qualitativeResearch: 0,
@@ -33,9 +40,22 @@ const appInitialState = {
 function appReducer(state, action) {
   const { type } = action
   switch(type) {
+
+    case 'userLoaded':
+      const { name, email } = action
+      return { 
+        ...state, 
+        user: {
+          ...state.user,
+          name,
+          email,
+        }
+      }
+
     case 'changeStep':
       const { step } = action
       return { ...state, currentStep: action.step }
+      
     case 'changeRating':
       const { groupId, disciplineId, rating } = action
       return { 

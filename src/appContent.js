@@ -72,7 +72,7 @@ const appContent = {
     title: 'Product',
     disciplines: [{
       id: 'strategy',
-      title: 'Strategy',
+      title: 'Product Strategy',
       description: '',
     }, {
       id: 'scenarios',
@@ -85,6 +85,10 @@ const appContent = {
     }, {
       id: 'stakeHolderManagement',
       title: 'Stakeholder Management',
+      description: '',
+    }, {
+      id: 'leadership',
+      title: 'Leadership',
       description: '',
     }]
   }],

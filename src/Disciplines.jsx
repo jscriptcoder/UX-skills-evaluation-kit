@@ -7,8 +7,8 @@ import HighchartsMore from 'highcharts/highcharts-more'
 import HighchartsReact from 'highcharts-react-official'
 
 import { AppContext } from './Store'
-import appContent from './app-content'
-import radarOptions from './radar-options'
+import appContent from './appContent'
+import radarOptions from './radarOptions'
 
 HighchartsMore(Highcharts)
 
