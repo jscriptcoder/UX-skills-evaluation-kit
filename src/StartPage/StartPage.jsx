@@ -1,8 +1,15 @@
+import './StartPage.less'
+
 import React from 'react'
 
-export default function StartPage(props) {
+import { startPage } from '../services/content'
+
+export default function StartPage() {
   return (
     <div className="Page StartPage">
-      Starting page here...
-    </div>)
+      <div 
+        className="StartPage__text" 
+        dangerouslySetInnerHTML={{ __html: startPage }} />
+    </div>
+  )
 }

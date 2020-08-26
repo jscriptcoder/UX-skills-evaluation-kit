@@ -7,7 +7,7 @@ import HighchartsMore from 'highcharts/highcharts-more'
 import HighchartsReact from 'highcharts-react-official'
 
 import { AppContext } from '../Store'
-import appContent from '../services/content'
+import { ratings, groups } from '../services/content'
 import radarOptions from '../services/radarOptions'
 
 HighchartsMore(Highcharts)
@@ -22,13 +22,13 @@ const slideMarks = [0, 1, 2, 3, 4, 5]
   }, {})
 
 const tipFormatter = value => {
-  return appContent.ratings[value]
+  return ratings[value]
 }
 
 export default function Disciplines(props) {
   const { groupId } = props
   const { state, dispatch } = useContext(AppContext)
-  const { disciplines } = appContent.groups.find(group => group.id === groupId)
+  const { disciplines } = groups.find(group => group.id === groupId)
   const ratings = state[groupId]
 
   const getChartOptions = useCallback(() => {
@@ -59,7 +59,7 @@ export default function Disciplines(props) {
                 title="Discipline"
                 key="title"
                 width={400} render={item => (
-                  <Item style={{  marginRight: 16 }}>
+                  <Item style={{ marginRight: 16 }}>
                     <Item.Meta title={item.title} description={item.description} />
                   </Item>
                 )} />

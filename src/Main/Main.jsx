@@ -8,7 +8,7 @@ import { AppContext } from '../Store'
 import StartPage from '../StartPage/StartPage'
 import Disciplines from '../Disciplines'
 import ResultsPage from '../ResultsPage/ResultsPage'
-import appContent from '../services/content'
+import { groups } from '../services/content'
 
 const { Step } = Steps
 
@@ -18,7 +18,7 @@ export default function Main() {
   const { currentStep } = state
 
   return (
-    <Layout.Content className="Content">
+    <Layout.Content className="Main">
       <Steps
         type="navigation"
         current={currentStep}
@@ -27,19 +27,16 @@ export default function Main() {
           slides.current.goTo(step)
         }}>
           <Step key="starting" title="Start" />
-          {appContent
-            .groups
-              .map((group, i) => (
-                <Step 
-                  key={group.id} 
-                  title={group.title} />
-              ))
-          }
+          {groups.map((group, i) => (
+            <Step 
+              key={group.id} 
+              title={group.title} />
+          ))}
           <Step key="results" title="Results" />
       </Steps>
       <Carousel dots={false} ref={slides}>
         <StartPage />
-        {appContent.groups.map(group => (
+        {groups.map(group => (
           <Disciplines 
             key={group.id}
             groupId={group.id} />
