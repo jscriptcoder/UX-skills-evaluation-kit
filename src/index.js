@@ -1,9 +1,10 @@
+import './styles/index.less'
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { FirebaseAppProvider, SuspenseWithPerf } from 'reactfire'
 
-import './index.less'
-import firebaseConfig from './firebaseConfig'
+import firebaseConfig from './services/firebaseConfig'
 import Store from './Store'
 import App from './App'
 

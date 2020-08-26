@@ -1,17 +1,18 @@
+import './Main.less'
+
 import React, { useContext, useRef } from 'react'
 import { Steps, Layout, Carousel } from 'antd'
 import { HomeTwoTone } from '@ant-design/icons'
 
-import './Content.less'
-import { AppContext } from './Store'
-import StartPage from './StartPage'
-import Disciplines from './Disciplines'
-import ResultsPage from './ResultsPage'
-import appContent from './appContent'
+import { AppContext } from '../Store'
+import StartPage from '../StartPage/StartPage'
+import Disciplines from '../Disciplines'
+import ResultsPage from '../ResultsPage/ResultsPage'
+import appContent from '../services/content'
 
 const { Step } = Steps
 
-export default function Content() {
+export default function Main() {
   const slides = useRef(null)
   const { state, dispatch } = useContext(AppContext)
   const { currentStep } = state

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Layout } from 'antd'
 
-import { AppContext } from './Store'
+import { AppContext } from '../Store'
 
 export default function Header() {
   const { state } = useContext(AppContext)

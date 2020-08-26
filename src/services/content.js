@@ -1,4 +1,4 @@
-const appContent = {
+const content = {
   groups: [{
     id: 'research',
     title: 'Research',
@@ -102,4 +102,4 @@ const appContent = {
   ]
 }
 
-export default appContent
+export default content

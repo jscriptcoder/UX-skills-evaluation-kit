@@ -8,9 +8,9 @@ import {
 
 import { AppContext } from './Store'
 import Header from './Header'
-import Content from './Content'
+import Main from './Main'
 
-export default function App(props) {
+export default function App() {
   const { state, dispatch } = useContext(AppContext)
 
   const userRef = useFirestore()
@@ -28,7 +28,7 @@ export default function App(props) {
   return (
     <Layout className="App">
       <Header />
-      <Content />
+      <Main />
     </Layout>
   )
 }

@@ -2,8 +2,8 @@ import React, { useContext, useCallback } from 'react'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
-import { AppContext } from './Store'
-import pieOptions from './pie-options'
+import { AppContext } from '../Store'
+import pieOptions from '../services/pieOptions'
 
 export default function ResultsPage(props) {
   const { state, dispatch } = useContext(AppContext)
