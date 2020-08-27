@@ -2,6 +2,8 @@ const linkElizabethBacon = 'http://elizabethbacon.com/the-ux-sundial-model-itera
 const linkDavidTravis = 'https://www.userfocus.co.uk/pdf/competency-map.pdf'
 const linkIndustry = 'https://www.userfocus.co.uk/articles/ux_job_title_generator.html'
 
+export const loading = 'Loading user...'
+
 export const startPage = `
 <p>
   Welcome to your private self-assessment area. This tool has been inspired by 

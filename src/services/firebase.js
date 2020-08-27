@@ -1,4 +1,6 @@
-const firebaseConfig = {
+import { FileAddFilled } from "@ant-design/icons"
+
+export const config = {
   apiKey: 'AIzaSyAA27Eaqb8GbZvN891xgr6dLMLPq3tjvRg',
   authDomain: 'ux-skills-evaluation.firebaseapp.com',
   databaseURL: 'https://ux-skills-evaluation.firebaseio.com',
@@ -8,4 +10,6 @@ const firebaseConfig = {
   appId: '1:110917680293:web:1deabd3c83b0b268e3214c'
 }
 
-export default firebaseConfig
+export function addField() {
+  
+}

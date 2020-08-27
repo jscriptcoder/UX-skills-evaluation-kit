@@ -1,7 +1,6 @@
 import React, { useContext, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, Table, Slider, Popover, List } from 'antd'
-import { InfoCircleTwoTone } from '@ant-design/icons'
 import Highcharts from 'highcharts'
 import HighchartsMore from 'highcharts/highcharts-more'
 import HighchartsReact from 'highcharts-react-official'
