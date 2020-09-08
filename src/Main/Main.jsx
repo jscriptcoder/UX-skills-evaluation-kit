@@ -12,6 +12,11 @@ import { groups } from '../services/content'
 
 const { Step } = Steps
 
+const step2group = groups.reduce((acc, group, i) => {
+  acc[i+1] = group.id
+  return acc
+}, {})
+
 export default function Main() {
   const slides = useRef(null)
   const { state, dispatch } = useContext(AppContext)
@@ -27,9 +32,16 @@ export default function Main() {
         type="navigation"
         current={currentStep}
         onChange={step => {
-          dispatch({ type: 'changeStep', step }) // changes app state
+          const previousStep = currentStep
 
-          // userRef.set({ something: 'new' }, { merge: true }) // stores (all) disciplines in firebase
+          dispatch({ type: 'changeStep', step }) // changes app state
+          
+          if (step2group[previousStep]) {
+            // saves previous step
+            const groupId = step2group[previousStep]
+            const group = state[groupId]
+            userRef.set({ [groupId]: group }, { merge: true }) // stores (all) disciplines in firebase
+          }
 
           slides.current.goTo(step) // moves to next slide
         }}>
