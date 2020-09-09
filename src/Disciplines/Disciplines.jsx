@@ -1,6 +1,6 @@
 import React, { useContext, useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col, Table, Slider, Popover, List } from 'antd'
+import { Row, Col, Table, Slider, List } from 'antd'
 import Highcharts from 'highcharts'
 import HighchartsMore from 'highcharts/highcharts-more'
 import HighchartsReact from 'highcharts-react-official'

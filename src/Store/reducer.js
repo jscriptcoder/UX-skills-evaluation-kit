@@ -12,6 +12,7 @@ export default function reducer(state, action) {
         design = state.design, 
         content = state.content, 
         product = state.product
+
       } = action.user
 
       return { 
@@ -29,7 +30,7 @@ export default function reducer(state, action) {
 
     case 'changeStep':
       const { step } = action
-      return { ...state, currentStep: action.step }
+      return { ...state, currentStep: step }
       
     case 'changeRating':
       const { groupId, disciplineId, rating } = action

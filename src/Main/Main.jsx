@@ -1,6 +1,6 @@
 import './Main.less'
 
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useCallback } from 'react'
 import { Steps, Layout, Carousel } from 'antd'
 import { useFirestore } from 'reactfire'
 
@@ -22,6 +22,21 @@ export default function Main() {
   const { state, dispatch } = useContext(AppContext)
   const { currentStep } = state
 
+  const changeStep = useCallback(step => {
+    const previousStep = currentStep
+
+    dispatch({ type: 'changeStep', step }) // changes app state
+    
+    if (step2group[previousStep]) {
+      // saves previous step
+      const groupId = step2group[previousStep]
+      const group = state[groupId]
+      userRef.set({ [groupId]: group }, { merge: true }) // stores disciplines in firebase
+    }
+
+    slides.current.goTo(step) // moves to next slide
+  }, [currentStep, state])
+
   const userRef = useFirestore()
     .collection('users')
     .doc(state.user.id)
@@ -31,35 +46,32 @@ export default function Main() {
       <Steps
         type="navigation"
         current={currentStep}
-        onChange={step => {
-          const previousStep = currentStep
+        onChange={changeStep}>
+        
+        {/* Home step */}
+        <Step key="starting" title="Start" />
 
-          dispatch({ type: 'changeStep', step }) // changes app state
-          
-          if (step2group[previousStep]) {
-            // saves previous step
-            const groupId = step2group[previousStep]
-            const group = state[groupId]
-            userRef.set({ [groupId]: group }, { merge: true }) // stores (all) disciplines in firebase
-          }
+        {/* Disciplines steps */}
+        {groups.map((group, i) => (
+          <Step 
+            key={group.id} 
+            title={group.title} />
+        ))}
 
-          slides.current.goTo(step) // moves to next slide
-        }}>
-          <Step key="starting" title="Start" />
-          {groups.map((group, i) => (
-            <Step 
-              key={group.id} 
-              title={group.title} />
-          ))}
-          <Step key="results" title="Results" />
+        {/* Results step */}
+        <Step key="results" title="Results" />
+        
       </Steps>
+
       <Carousel dots={false} ref={slides}>
         <StartPage />
+
         {groups.map(group => (
           <Disciplines 
             key={group.id}
             groupId={group.id} />
         ))}
+
         <ResultsPage />
       </Carousel>
     </Layout.Content>

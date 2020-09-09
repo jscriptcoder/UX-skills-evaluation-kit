@@ -1,5 +1,3 @@
-import { FileAddFilled } from "@ant-design/icons"
-
 export const config = {
   apiKey: 'AIzaSyAA27Eaqb8GbZvN891xgr6dLMLPq3tjvRg',
   authDomain: 'ux-skills-evaluation.firebaseapp.com',
@@ -8,8 +6,4 @@ export const config = {
   storageBucket: 'ux-skills-evaluation.appspot.com',
   messagingSenderId: '110917680293',
   appId: '1:110917680293:web:1deabd3c83b0b268e3214c'
-}
-
-export function addField() {
-  
 }
