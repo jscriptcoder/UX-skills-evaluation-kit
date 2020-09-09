@@ -4,6 +4,7 @@ import HighchartsReact from 'highcharts-react-official'
 
 import { AppContext } from '../Store'
 import columnOptions from '../services/columnOptions'
+import { groups } from '../services/content'
 
 export default function ResultsPage(props) {
   const { state, dispatch } = useContext(AppContext)

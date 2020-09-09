@@ -3,7 +3,7 @@ import { groups } from './content'
 const columnOptions = {
   chart: { type: 'column' },
   title: {
-    text: 'Stacked column chart'
+    text: 'Title here...'
   },
 
   legend: { enabled: false },
