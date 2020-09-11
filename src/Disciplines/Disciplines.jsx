@@ -1,4 +1,4 @@
-import React, { useContext, useCallback } from 'react'
+import React, { useContext, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, Table, Slider, List } from 'antd'
 import Highcharts from 'highcharts'
@@ -30,19 +30,17 @@ export default function Disciplines(props) {
   const { disciplines } = groups.find(group => group.id === groupId)
   const ratings = state[groupId]
 
-  const getChartOptions = useCallback(() => {
-    return {
-      ...radarOptions,
-      xAxis: {
-        ...radarOptions.xAxis,
-        categories: disciplines.map(discipline => discipline.title)
-      },
-      series: [{
-        ...radarOptions.series[0],
-        data: disciplines.map(discipline => ratings[discipline.id] || 0)
-      }]
-    }
-  }, [disciplines, ratings])
+  const chartOptions = useMemo(() => ({
+    ...radarOptions,
+    xAxis: {
+      ...radarOptions.xAxis,
+      categories: disciplines.map(discipline => discipline.title)
+    },
+    series: [{
+      ...radarOptions.series[0],
+      data: disciplines.map(discipline => ratings[discipline.id] || 0)
+    }]
+  }), [disciplines, ratings])
 
   return (
     <div className="Page Disciplines">
@@ -88,7 +86,7 @@ export default function Disciplines(props) {
           <div className="Panel">
             <HighchartsReact
               highcharts={Highcharts}
-              options={getChartOptions()} />
+              options={chartOptions} />
           </div>
         </Col>
       </Row>

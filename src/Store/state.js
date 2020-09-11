@@ -3,7 +3,7 @@ import { groups } from '../services/content'
 
 const state = {
   user: {
-    id: getQueryParam('user'),
+    id: getQueryParam('user') || 'anonymous',
     name: '',
     email: '',
   },

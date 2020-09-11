@@ -8,7 +8,7 @@ import { AppContext } from '../Store'
 
 export default function Header() {
   const { state } = useContext(AppContext)
-  const { name } = state.user
+  const { name = 'Anonymous' } = state.user
 
   return (
     <Layout.Header className="Header">
