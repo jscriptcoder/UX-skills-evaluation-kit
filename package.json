@@ -11,7 +11,7 @@
     "antd": "^4.3.3",
     "craco-less": "^1.17.0",
     "firebase": "^7.16.0",
-    "highcharts": "^8.1.0",
+    "highcharts": "^9.0.0",
     "highcharts-react-official": "^3.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
